@@ -21,13 +21,13 @@ MEDIA_DIR = os.path.join(BASE_DIR,"media")
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-s0eg9q5^i%wy4n5m78yvbpwkb3j3u)w8nx=pr&c6+ag8ltvs5t"
+# SECRET_KEY = "django-insecure-s0eg9q5^i%wy4n5m78yvbpwkb3j3u)w8nx=pr&c6+ag8ltvs5t"
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['myapp.onrender.com']
+ALLOWED_HOSTS = ['.onrender.com']
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
