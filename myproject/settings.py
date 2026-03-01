@@ -31,6 +31,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+# DEBUG = True
+
 ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['.onrender.com']
 
@@ -55,6 +57,7 @@ cloudinary.config(
     cloud_name="de1f1bgj8",
     api_key="719414213275972",
     api_secret="nbhTijstkgw9xaGjr2mpB7SA2cg",
+    secure=True
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -137,7 +140,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 # MEDIA_URL = "/media/"
-# MEDIA_ROOT = MEDIA_DIR
+# MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
