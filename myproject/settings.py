@@ -12,24 +12,27 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+
+import cloudinary
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMP_DIR = os.path.join(BASE_DIR,"templates")
 STATIC_DIR = os.path.join(BASE_DIR,"static")
-MEDIA_DIR = os.path.join(BASE_DIR,"media")
+# MEDIA_DIR = os.path.join(BASE_DIR,"media")
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "django-insecure-s0eg9q5^i%wy4n5m78yvbpwkb3j3u)w8nx=pr&c6+ag8ltvs5t"
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = "django-insecure-s0eg9q5^i%wy4n5m78yvbpwkb3j3u)w8nx=pr&c6+ag8ltvs5t"
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['.onrender.com']
+# ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['.onrender.com']
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -47,6 +50,13 @@ INSTALLED_APPS = [
     'cloudinary_storage',
 ]
 
+
+cloudinary.config(
+    cloud_name="de1f1bgj8",
+    api_key="719414213275972",
+    api_secret="nbhTijstkgw9xaGjr2mpB7SA2cg",
+)
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
@@ -59,6 +69,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
 
 ROOT_URLCONF = "myproject.urls"
 
@@ -121,9 +132,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [STATIC_DIR]
-MEDIA_URL = "/media/"
-MEDIA_ROOT = MEDIA_DIR
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+# MEDIA_URL = "/media/"
+# MEDIA_ROOT = MEDIA_DIR
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
